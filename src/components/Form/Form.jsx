@@ -1,12 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Form.css'
+import { useTelegram } from '../../hooks/useTelegram'
 
 const Form = () => {
+  const {tg} = useTelegram()
+  const [country, setCountry] = useState('')
+  const [street, setStreet] = useState('')
+  const [subject, setSubject] = useState('')
+  
+  useEffect(() => {
+    tg.MainButton.setParams({
+      text: "Отправить данные"
+    })
+  }, [])
 
-    const [country, setCountry] = useState('')
-    const [street, setStreet] = useState('')
-
-    const [subject, setSubject] = useState('')
+  useEffect(() => {
+    if(!street || !country) {
+      tg.MainButton.hide()
+    }
+    else {
+      tg.MainButton.show()
+    }
+  }, [country, street])
 
   return (
     <div className={'form'}>
