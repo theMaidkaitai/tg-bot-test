@@ -37,7 +37,7 @@ const Form = () => {
     else {
       tg.MainButton.show()
     }
-  }, [])
+  }, [country, street])
 
   return (
     <div className={'form'}>
