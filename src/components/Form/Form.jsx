@@ -21,7 +21,7 @@ const Form = () => {
     return () => {
       tg.WebApp.offEvent('mainButtonClicked', onSendData)
     }
-  }, [country, street, subject])
+  }, [])
 
   useEffect(() => {
     tg.MainButton.setParams({
